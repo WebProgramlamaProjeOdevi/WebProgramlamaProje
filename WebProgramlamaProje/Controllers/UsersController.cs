@@ -4,19 +4,10 @@ namespace WebProgramlamaProje.Controllers
 {
     public class UsersController : Controller
     {
-        public IActionResult AdminLogin()
+        public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult UserRegister()
-        {
-            return View();
-        }
-
-        public IActionResult UserLogin()
-        {
-            return View();
-        }
     }
 }
