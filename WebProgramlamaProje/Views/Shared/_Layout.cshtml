@@ -1,52 +1,142 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebProgramlamaProje</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebProgramlamaProje.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Web Programlama</title>
+
+    <link rel="shortcut icon" type="image/png" href="~/blogui/img/logo.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/blogui/css/all.min.css">
+    <link rel="stylesheet" href="~/blogui/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/blogui/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/blogui/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/blogui/css/animate.css">
+    <link rel="stylesheet" href="~/blogui/css/meanmenu.min.css">
+    <link rel="stylesheet" href="~/blogui/css/main.css">
+    <link rel="stylesheet" href="~/blogui/css/responsive.css">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebProgramlamaProje</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="AdminLogin">Giriş</a>
-                        </li>
-                    </ul>
+
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+ 
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">                     
+                        <nav class="main-menu" style="margin-left:5px;">
+                            <ul>
+                                <li >
+                                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>                                
+                                <li>
+                                    <a  asp-area="" asp-controller="Home" asp-action="AllBlogs">Tüm Bloglar</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Login" asp-action="AdminLogin">Giriş</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mobile-menu"></div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+    </div>  
+
+    @RenderBody()
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">Hakkımızda</h2>
+                        <p>Lorem ipsum hakkında paragraf</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">İletişim</h2>
+                        <ul>
+                            <li>Sakarya University/Serdivan</li>
+                            <li>mehmetalidemirts@gmail.com</li>
+                            <li>+5353978339</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">Sayfalar</h2>
+                        <ul>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="AllBlogs">Tüm Bloglar</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Login" asp-action="AdminLogin">Giriş</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">Abone ol</h2>
+                        <p>Güncel paylaşımları kaçırmamak için bültene abone olun</p>
+                        <form>
+                            <input type="email" placeholder="Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <p>Copyrights &copy; 2023 - <a href="http://mehmetalidemirtas.com/">Mehmetali Demirtas</a> Her türlü hakkı saklıdır.</p>
+                </div>
+                <div class="col-lg-6 text-right col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="https://github.com/mehmetalidemirtas" target="_blank"><i class="fab fa-github"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/mehmetalidemirtas/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="mailto:ali.demirtas.developer@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - WebProgramlamaProje - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/blogui/js/jquery-1.11.3.min.js"></script>
+    <script src="~/blogui/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/blogui/js/jquery.countdown.js"></script>
+    <script src="~/blogui/js/jquery.isotope-3.0.6.min.js"></script>
+    <script src="~/blogui/js/waypoints.js"></script>
+    <script src="~/blogui/js/owl.carousel.min.js"></script>
+    <script src="~/blogui/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/blogui/js/jquery.meanmenu.min.js"></script>
+    <script src="~/blogui/js/sticker.js"></script>
+    <script src="~/blogui/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

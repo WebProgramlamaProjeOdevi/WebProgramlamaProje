@@ -15,11 +15,21 @@ namespace WebProgramlamaProje.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult AllBlogs() 
+        {
+            return View();
+        }
+
+        public IActionResult BlogDetails() {
             return View();
         }
 
