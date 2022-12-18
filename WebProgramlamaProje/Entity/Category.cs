@@ -6,9 +6,9 @@ namespace WebProgramlamaProje.Entity
     public class Category
     {
         [Key]
-        public int Id { get; set; }
+        public int CategoryID { get; set; }
 
-        public string? Name { get; set; }
-        public ICollection<Blogs> blogs { get; set; }
+        public string? CategoryName { get; set; }
+        public ICollection<Blogs> Blogs { get; set; }
     }
 }

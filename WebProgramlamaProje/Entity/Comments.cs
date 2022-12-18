@@ -5,7 +5,7 @@ namespace WebProgramlamaProje.Entity
     public class Comments
     {
         [Key]
-        public int Id { get; set; }
+        public int CommentID { get; set; }
         public string NameSurname { get; set; }
 
         public string CommentText { get; set; }
