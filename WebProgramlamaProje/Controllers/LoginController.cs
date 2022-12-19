@@ -17,5 +17,9 @@ namespace WebProgramlamaProje.Controllers
 		{
 			return View();
 		}
+		public IActionResult Logout()
+		{
+			return View();
+		}
 	}
 }

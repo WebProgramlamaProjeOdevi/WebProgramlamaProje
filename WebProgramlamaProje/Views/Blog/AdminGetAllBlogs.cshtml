@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "AdminGetAllBlogs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="color :red">Blog Listesi</h3>
+                <div class="card-tools">
+                </div>
+            </div>
+            <div class="card-body p-0 responsive">
+                <table class="table table-striped projects table-responsive-sm table-responsive-md table-responsive-lg">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 15%">
+                                Başlık
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 5%">
+                                Düzenle
+                            </th>
+                            <th style="width: 5%">
+                                Sil
+                            </th>
+                            <th style="width: 5%">
+                                Yorumlar
+                            </th>
+                            <th style="width: 5%">
+                                Detaylar
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <tr>
+                                <td>x.BlogID</td>
+                                <td>
+                                    <a>x.BlogTitle</a>
+                                </td>
+
+                                <td class="project-state">
+                                    <span class="badge badge-dark">x.Category.CategoryName</span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" href="/Blog/UpdateBlog/x.BlogID">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Düzenle
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm delete" href="/Blog/DeleteBlog/x.BlogID">
+                                        <i class="fas fa-trash"></i>
+                                        Sil
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="/Blog/GetCommentByBlog/x.BlogID">
+                                        <i class="fas fa-solid fa-comment"></i>
+                                        Yorumlar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Blog/BlogDetails/x.BlogID" class="btn btn-success btn-sm">
+                                        <i class="fas fa-solid fa-info"></i>
+                                        Detaylar
+                                    </a>
+                                </td>
+
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+<a href="/Blog/AddNewBlog/" class="btn btn-primary">Yeni blog ekle</a>
+<br />
+<br />
+<script>
+    $('.delete').on('click', function (e) {
+        e.preventDefault();
+        var self = $(this);
+        console.log(self.data('title'));
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Emin misin?',
+            text: "Bu işlem geri alınamaz!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Evet,sil!',
+            cancelButtonText: 'Hayır,iptal!',
+            confirmButtonColor: "#558B2F",
+            cancelButtonColor: "#C62828",
+            reverseButtons: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Silindi!',
+                    'Blog yazınız basarıyla silindi.',
+                    'success'
+                )
+                location.href = self.attr('href');
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'İptal edildi',
+                    'Blog yazınız güvende :)',
+                    'error'
+                )
+            }
+        })
+    })
+</script>
+
+
