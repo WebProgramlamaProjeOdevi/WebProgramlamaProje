@@ -16,17 +16,13 @@ namespace WebProgramlamaProje.Controllers
         [HttpGet]
         public IEnumerable<Blog> Get()
         {
-
-           
-       
-
             return _context.Blogs.ToList();
-   }
+        }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var blog = _context.Blogs.Find(id);
-           if (blog == null)
+            if (blog == null)
             {
                 return NotFound();
             }
@@ -34,39 +30,36 @@ namespace WebProgramlamaProje.Controllers
             {
                 return Ok(blog);
             }
-            
+
         }
         [HttpPost]
         public IActionResult post([FromBody] Blog blog)
         {
-            var _blog=new Blog();
+            var _blog = new Blog();
             _blog.AuthorID = blog.AuthorID;
             _blog.ImageAdress = blog.ImageAdress;
             _blog.BlogName = blog.BlogName;
-            _blog.CategoryID= blog.CategoryID;
+            _blog.CategoryID = blog.CategoryID;
             _blog.Description = blog.Description;
             if (_blog != null)
             {
                 _context.Blogs.Add(_blog);
                 _context.SaveChanges();
-                return Ok(_blog);
             }
-            return BadRequest();
+            return Ok(_blog);
         }
         [HttpDelete]
-        public IActionResult delete(int id=2)
-        { 
+        public IActionResult delete(int id = 2)
+        {
             var blog = _context.Blogs.Find(id);
             if (blog != null)
             {
                 _context.Blogs.Remove(blog);
-                _context.SaveChanges();
                 return Ok(blog);
 
             }
             return BadRequest();
 
         }
-       
     }
 }
