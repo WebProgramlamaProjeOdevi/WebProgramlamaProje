@@ -12,15 +12,11 @@ namespace WebProgramlamaProje.Controllers
     [ApiController]
     public class BlogsApiController : ControllerBase
     {
-        private readonly Context _context;
-        public BlogsApiController(Context context)
-        {
-            _context = context;
-        }
+        Context _context = new Context();
         [HttpGet]
         public IEnumerable<Blog> Get()
         {
-            return _context.Blogs.Include(X=>X.Author.AuthorName).ToList();
+            return _context.Blogs.ToList();
         }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -53,7 +49,7 @@ namespace WebProgramlamaProje.Controllers
             return Ok(_blog);
         }
         [HttpDelete]
-        public IActionResult delete(int id)
+        public IActionResult delete(int id=2)
         { 
             var blog = _context.Blogs.Find(id);
             if (blog != null)

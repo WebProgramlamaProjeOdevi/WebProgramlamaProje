@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class CityRepository:API<City>
+	public class CityRepository:GenericRepository<City>
 	{
 	}
 }

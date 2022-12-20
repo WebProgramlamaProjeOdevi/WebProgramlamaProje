@@ -1,8 +1,10 @@
-﻿@model IEnumerable<WebProgramlamaProje.Entity.Blog>
+﻿@model List<WebProgramlamaProje.Entity.Blog>
+
 @{
-    ViewData["Title"] = "AdminGetAllBlogs";
+    ViewData["Title"] = "Get";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +32,7 @@
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Kategori
-                            </th>                         
+                            </th>
                             <th style="width: 5%">
                                 Sil
                             </th>
@@ -43,7 +45,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var x in Model){
+                        @foreach (var x in Model)
+                        {
                             <tr>
                                 <td>@x.BlogID</td>
                                 <td>
@@ -51,8 +54,8 @@
                                 </td>
 
                                 <td class="project-state">
-                                    <span class="badge badge-dark">@x.Category.CategoryName</span>
-                                </td>                                
+                                    <span class="badge badge-dark">@x.Author.AuthorName</span>
+                                </td>
                                 <td>
                                     <a class="btn btn-danger btn-sm delete" href="/Blog/AuthorDeleteBlog/@x.BlogID">
                                         <i class="fas fa-trash"></i>

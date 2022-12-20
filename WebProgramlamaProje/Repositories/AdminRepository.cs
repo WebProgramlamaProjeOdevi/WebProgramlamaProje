@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class AdminRepository:API<Admin>
+	public class AdminRepository:GenericRepository<Admin>
 	{
 	}
 }

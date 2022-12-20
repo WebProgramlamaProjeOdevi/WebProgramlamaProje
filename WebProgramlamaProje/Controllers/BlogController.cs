@@ -23,6 +23,7 @@ namespace WebProgramlamaProje.Controllers
             //Yazarın blogları listele
             return View(); 
         }
+
         [HttpGet]
         public IActionResult AuthorAddNewBlog(Blog blog)
         {

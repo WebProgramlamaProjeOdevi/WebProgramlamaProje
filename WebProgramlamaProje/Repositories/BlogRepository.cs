@@ -2,7 +2,13 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class BlogRepository : API<Blog>
+	public class BlogRepository : GenericRepository<Blog>
 	{
+		public List<Blog> BlogGetByID(int id)
+		{
+			BlogRepository blogRepository = new BlogRepository();
+			return blogRepository.List(x=>x.BlogID== id);
+
+		}
 	}
 }
