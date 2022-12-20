@@ -1,22 +1,24 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebProgramlamaProje.Entity;
+using WebProgramlamaProje.Repositories;
 
 namespace WebProgramlamaProje.Controllers
 {
     public class CommentController : Controller
     {
+        CommentRepository commentRepository = new CommentRepository();
         [HttpGet]
-        public IActionResult LeaveComment(int id)
+        public PartialViewResult LeaveComment(int id)
         {
-            //Bloglara yorum yap get
-            return View();
+            var comments = commentRepository.GetCommentByID(id);
+            return PartialView(comments);
         }
         [HttpPost]
         public IActionResult LeaveComment(Comment comment)
         {
-            //Bloglara yorum yap post
-            return View();
+			comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+			return View();
         }
 
         public IActionResult GetAllComments(int id)

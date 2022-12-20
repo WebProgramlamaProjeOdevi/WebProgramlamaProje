@@ -1,20 +1,22 @@
-﻿@{
+﻿@model IEnumerable<WebProgramlamaProje.Entity.Blog>
+@{
 	ViewData["Title"] = "BlogDetails";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@foreach(var x in Model){
 <div class="breadcrumb-section" style="background-image: url('https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
-					<h1>Başlık</h1>
-					<p>Tarih</p>
+					<h1>@x.BlogName</h1>
+						<p>&nbsp;-&nbsp; @(((DateTime)x.BlogDate).ToString("dd-MM-yyyy"))</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+}
 
 <div class="mt-150 mb-150">
 	<div class="container">
@@ -22,14 +24,16 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-10">
 				<div class="single-article-section">
-
+					@foreach (var x in Model)
+					{
 					<div class="single-article-text">
-						<div class="single-artcile-bg" style="background-image: url('x.BlogImage');"></div>
-						<h2>Başlık</h2>
-						<p>İçerik</p>
+						<div class="single-artcile-bg" style="background-image: url('@x.ImageAdress');"></div>
+						<h2>@x.BlogName</h2>
+						<p>@x.Description</p>
 						<br />
 					</div>
-					Yorumlar
+					}
+					@await Component.InvokeAsync("CommentList",new{id=ViewBag.id})
 					Yorum Yap
 				</div>
 			</div>

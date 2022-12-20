@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class CategoryRepository:API<Category>
+	public class CategoryRepository:GenericRepository<Category>
 	{
 	}
 }

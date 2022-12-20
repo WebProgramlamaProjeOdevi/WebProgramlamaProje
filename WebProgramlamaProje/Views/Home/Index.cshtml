@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<WebProgramlamaProje.Entity.Blog>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="hero-area hero-bg" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80'); ">
@@ -19,8 +21,6 @@
     </div>
 </div>
 
-
-<!-- latest news -->
 <div class="latest-news pt-150 pb-150">
     <div class="container">
 
@@ -34,35 +34,31 @@
         </div>
 
 
-        <div class="row">                                            
+        <div class="row">         
+                    @foreach(var x in Model){
                     <div class="col-lg-4 col-md-6">
                         <div class="single-latest-news">
-                            <a href="/Blog/BlogDetails/x.BlogID">
-                                <div class="latest-news-bg">
-                                    
-                                        <img src="x.BlogImage" style="height:200px; width:863px">
-                                    
+                        <a href="/Home/BlogDetails/@x.BlogID">
+                                <div class="latest-news-bg">                                    
+                                        <img src="@x.ImageAdress" style="height:200px; width:863px">                                    
                                 </div>
                             </a>
                             <div class="news-text-box">
                                 <h3>
-                                    <a href="/Blog/BlogDetails/x.BlogID">
-                                       
-                                            Başlık
-                                      
+                                    <a href="/Home/BlogDetails/@x.BlogID">                                       
+                                            @x.BlogName                                      
                                     </a>
                                 </h3>
                                 <p class="blog-meta">
-                                    <span class="author"><i class="fas fa-user"></i> Yazar Adı</span>
-                            <span class="date"><i class="fas fa-calendar"></i> Tarih</span>
+                                    <span class="author"><i class="fas fa-user"></i> @x.Author.AuthorName</span>
+                                <span class="date"><i class="fas fa-calendar"></i>&nbsp;-&nbsp; @(((DateTime)x.BlogDate).ToString("dd-MM-yyyy"))</span>
                         </p>
-                              
-                                <a href="/Blog/blogDetails/x.BlogID" class="read-more-btn">Daha fazla oku <i class="fas fa-angle-right"></i></a>
+                            <p>@x.Description.Substring(0, x.Description.Substring(0, 200).LastIndexOf(" "))...</p>
+                                <a href="/Home/BlogDetails/@x.BlogID" class="read-more-btn">Daha fazla oku <i class="fas fa-angle-right"></i></a>
                             </div>
                         </div>
-                    </div>
-                
-            
+                    </div>                
+            }
         </div>
 
         <div class="row">

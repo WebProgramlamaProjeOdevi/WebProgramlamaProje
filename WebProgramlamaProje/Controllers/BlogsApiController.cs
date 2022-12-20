@@ -49,8 +49,8 @@ namespace WebProgramlamaProje.Controllers
             return Ok(_blog);
         }
         [HttpDelete]
-        public IActionResult delete(int id = 2)
-        {
+        public IActionResult delete(int id=2)
+        { 
             var blog = _context.Blogs.Find(id);
             if (blog != null)
             {
