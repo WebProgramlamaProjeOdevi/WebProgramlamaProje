@@ -9,7 +9,7 @@ namespace WebProgramlamaProje.Entity
         public string? BlogName { get; set; }
         public string? Description { get; set; }
         public string? ImageAdress { get; set; }
-        public DateTime BlogDate { get; set; }
+        public DateTime? BlogDate { get; set; }
 
 
         public int CategoryID { get; set; }

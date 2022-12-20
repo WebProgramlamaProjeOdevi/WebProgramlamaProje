@@ -1,0 +1,120 @@
+﻿@model List<WebProgramlamaProje.Entity.Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<h2 > blog ekle</h2>
+<div class="form-group" style="display:none;">
+    <input id ="txtblogId" class="form-control" name="blogId" />
+
+</div>
+<div class="form-group" style="display:none;">
+    <label for="Name">BLOG iSMİ</label>
+    <input id="txtBlogName" class="form-control" name="BlogName" />
+
+</div>
+<div class="form-group" style="display:none;">
+    <label for="Name">Description </label>
+    <input id="txtDescription" class="form-control" name="Description" />
+
+</div>
+<div class="form-group" style="display:none;">
+    <label for="Name">ImageAdress</label>
+    <input id="txtImageAdress" class="form-control" name="ImageAdress" />
+
+</div>
+<div class="form-group" style="display:none;">
+    <label for="Name">CategoryID</label>
+    <input id="txtCategoryID" class="form-control" name="CategoryID" />
+
+</div>
+<div class="form-group" style="display:none;">
+    <label for="Name">authorid</label>
+    <input id="txtauthorid" class="form-control" name="authorid" />
+
+</div>
+<div class="text-center panel-body">
+    <button id ="btnsave" class="btn btn-primary">blogları yükle</button>
+</div>
+<button onclick="GetAllBlogs()" class="btn btn-sm btn-primary">save</button>
+<br/>
+<h2>blog list</h2>
+<table id="tblblog" class="table table-sm table-striped table-bordered m-2">
+    <thead>
+        <tr>blog id</tr>
+        <tr>blog ismi</tr>
+        <tr>blog description</tr>
+        <tr>blog ImageAdress</tr>
+        <tr>blog CategoryID</tr>
+        <tr>blog authorid</tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    });
+    function GetAllBlogs(){
+        $.getJSON("/BlogApiResponse/GetAllBlogs", function (BlogApiResponse) {
+            $("#tblblog tbody tr").remove();
+            $.map(BlogApiResponse, function (Blog) {
+                $("#tblblog tbody").append("<tr>"
+                    + "<td>" + Blog.BlogID+"</td>"
+                    + "<td>" + Blog.BlogName+"</td>"
+                    + "<td>" + Blog.Description + "</td>"
+                    + "<td>" + Blog.ImageAdress + "</td>"
+                    + "<td>" + Blog.CategoryID + "</td>"
+                    + "<td>" + Blog.AuthorID + "</td>"
+                    +"<td>"
+                    + "<button class='btn-success' onclick='Delete(" + Blog.BlogID ")'>Delete</button>"
+                    +"</td>"
+                    +"</tr>");
+                
+           
+            });
+   });
+    }
+    function Delete(BlogID){
+        if (BlogID>0){
+            $.ajax({
+                url: '/BlogApiResponse/Delete?BlogID' + BlogID,
+                type:'DELETE',
+                dataType:'json',
+                success:function(data){
+
+                },
+                error:function(ex){
+                    console.log('Error in operation');
+                }
+
+            }):
+
+            
+
+        }
+
+    }
+    $("#btnsave").click(function(){
+        var _blog={
+            BlogID=$("#txtblogId").val(),
+            BlogName=$("#txtBlogName").val(),
+            Description=$("#txtDescription").val(),
+            ImageAdress=$("#txtImageAdress").val(),
+            
+            CategoryID=$("#txtCategoryID").val(),
+            AuthorID=$("#txtauthorid").val(),
+        };
+        $.post("/BlogApiResponse/Post", _blog)
+             .done(function(data){
+
+                GetAllBlogs
+             });
+    });
+
+</script>
