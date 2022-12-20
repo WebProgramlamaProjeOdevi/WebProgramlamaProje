@@ -9,6 +9,6 @@ namespace WebProgramlamaProje.Entity
         public int CategoryID { get; set; }
 
         public string? CategoryName { get; set; }
-        public ICollection<Blogs> Blogs { get; set; }
+        public ICollection<Blog> Blogs { get; set; }
     }
 }

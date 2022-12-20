@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using WebProgramlamaProje.Entity;
 
@@ -32,6 +33,10 @@ namespace WebProgramlamaProje.Repositories
 			context.Set<T>().Find(id);
 		}
 
+		public List<T> TList(string item)
+		{
+			return context.Set<T>().Include(item).ToList();
+		}
 
 	}		
 }

@@ -13,7 +13,7 @@ namespace WebProgramlamaProje.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult LeaveComment(Comments comment)
+        public IActionResult LeaveComment(Comment comment)
         {
             //Bloglara yorum yap post
             return View();

@@ -9,11 +9,11 @@ namespace WebProgramlamaProje.Entity
 			optionsBuilder.UseSqlServer("server=DESKTOP-S43BMFO\\SQLEXPRESS;database=WebProgramlamaDb;integrated security=true;Encrypt=false");
 		}
 		public DbSet<Admin> Admins { get; set; }
-		public DbSet<Authors> Authors { get; set; }	
-		public DbSet<Blogs> Blogs { get; set; }
+		public DbSet<Author> Authors { get; set; }	
+		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<City> Cities { get; set; }
-		public DbSet<Comments> Comments { get; set; }
+		public DbSet<Comment> Comments { get; set; }
 
 	}
 }

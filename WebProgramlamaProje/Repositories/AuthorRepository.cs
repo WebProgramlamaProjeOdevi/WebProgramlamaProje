@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class AuthorRepository : API<Authors>
+	public class AuthorRepository : API<Author>
 	{
 	}
 }

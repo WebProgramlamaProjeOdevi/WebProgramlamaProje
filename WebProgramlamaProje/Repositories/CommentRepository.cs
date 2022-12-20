@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class CommentRepository : API<Comments>
+	public class CommentRepository : API<Comment>
 	{
 	}
 }

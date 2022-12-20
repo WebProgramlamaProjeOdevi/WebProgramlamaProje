@@ -1,6 +1,6 @@
 ﻿@model List<WebProgramlamaProje.Entity.Blog>
 @{
-    ViewData["Title"] = "AdminGetAllBlogs";
+    ViewData["Title"] = "AuthorGetBlogs";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -30,7 +30,10 @@
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Kategori
-                            </th>                         
+                            </th>
+                            <th style="width: 5%">
+                                Düzenle
+                            </th>
                             <th style="width: 5%">
                                 Sil
                             </th>
@@ -43,37 +46,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var x in Model){
-                            <tr>
-                                <td>@x.BlogID</td>
-                                <td>
-                                    <a>@x.BlogName</a>
-                                </td>
 
-                                <td class="project-state">
-                                    <span class="badge badge-dark">@x.Category.CategoryName</span>
-                                </td>                                
-                                <td>
-                                    <a class="btn btn-danger btn-sm delete" href="/Blog/AuthorDeleteBlog/@x.BlogID">
-                                        <i class="fas fa-trash"></i>
-                                        Sil
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="/Blog/GetCommentByBlog/x.BlogID">
-                                        <i class="fas fa-solid fa-comment"></i>
-                                        Yorumlar
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="/Home/BlogDetails/@x.BlogID" class="btn btn-success btn-sm">
-                                        <i class="fas fa-solid fa-info"></i>
-                                        Detaylar
-                                    </a>
-                                </td>
+                        <tr>
+                            <td>x.BlogID</td>
+                            <td>
+                                <a>x.BlogTitle</a>
+                            </td>
 
-                            </tr>
-                        }
+                            <td class="project-state">
+                                <span class="badge badge-dark">x.Category.CategoryName</span>
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/Blog/UpdateBlog/x.BlogID">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    Düzenle
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger btn-sm delete" href="/Blog/DeleteBlog/x.BlogID">
+                                    <i class="fas fa-trash"></i>
+                                    Sil
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="/Blog/GetCommentByBlog/x.BlogID">
+                                    <i class="fas fa-solid fa-comment"></i>
+                                    Yorumlar
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/Blog/BlogDetails/x.BlogID" class="btn btn-success btn-sm">
+                                    <i class="fas fa-solid fa-info"></i>
+                                    Detaylar
+                                </a>
+                            </td>
+
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -126,5 +135,3 @@
         })
     })
 </script>
-
-

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebProgramlamaProje.Entity;
+using WebProgramlamaProje.Repositories;
 
 namespace WebProgramlamaProje.Controllers
 {
@@ -8,7 +9,8 @@ namespace WebProgramlamaProje.Controllers
         public IActionResult AdminGetAllBlogs()
         {
             //Bütün blogları listele
-            return View();
+            BlogRepository blogRepository = new BlogRepository();
+            return View(blogRepository.TList("Category"));
         }
 
         public IActionResult DeleteBlog(int id)
@@ -22,7 +24,7 @@ namespace WebProgramlamaProje.Controllers
             return View(); 
         }
         [HttpGet]
-        public IActionResult AuthorAddNewBlog(Blogs blog)
+        public IActionResult AuthorAddNewBlog(Blog blog)
         {
             //Yazar yeni blog ekle get
             return View();
@@ -44,7 +46,7 @@ namespace WebProgramlamaProje.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AuthorUpdateBlog(Blogs p)
+        public IActionResult AuthorUpdateBlog(Blog p)
         {
             return RedirectToAction("AuthorGetBlogs");
         }

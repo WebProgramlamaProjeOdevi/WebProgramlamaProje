@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaProje.Repositories
 {
-	public class BlogRepository : API<Blogs>
+	public class BlogRepository : API<Blog>
 	{
 	}
 }

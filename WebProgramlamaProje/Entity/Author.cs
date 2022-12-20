@@ -2,12 +2,12 @@
 
 namespace WebProgramlamaProje.Entity
 {
-    public class Authors
+    public class Author
     {
         [Key]
         public int AuthorID { get; set; } 
         public string AuthorName { get; set; }
         public string AuthorPassword { get; set; }
-        public ICollection<Blogs> Blogs { get; set; }
+        public ICollection<Blog> Blogs { get; set; }
     }
 }
