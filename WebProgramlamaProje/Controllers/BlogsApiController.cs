@@ -16,9 +16,12 @@ namespace WebProgramlamaProje.Controllers
         [HttpGet]
         public IEnumerable<Blog> Get()
         {
+
            
-            return _context.Blogs.Include(X=>X.Author.AuthorName).ToList();
-        }
+       
+
+            return _context.Blogs.ToList();
+   }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -51,7 +54,7 @@ namespace WebProgramlamaProje.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IActionResult delete(int id)
+        public IActionResult delete(int id=2)
         { 
             var blog = _context.Blogs.Find(id);
             if (blog != null)
