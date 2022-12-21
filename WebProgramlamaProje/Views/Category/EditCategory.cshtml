@@ -1,0 +1,17 @@
+﻿@model WebProgramlamaProje.Entity.Category
+
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2 style="color :red">Kategori Güncelleme</h2>
+<form class="form-group" method="post">
+    @Html.Label("Kategori ID(Değiştirmeyiniz!)")
+    @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</form>
