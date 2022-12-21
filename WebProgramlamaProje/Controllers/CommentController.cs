@@ -11,27 +11,27 @@ namespace WebProgramlamaProje.Controllers
         [HttpGet]
         public PartialViewResult LeaveComment(int id)
         {
-            var comments = commentRepository.GetCommentByID(id);
-            return PartialView(comments);
+            ViewBag.id = id;
+            return PartialView();
         }
         [HttpPost]
         public IActionResult LeaveComment(Comment comment)
         {
-			comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-			return View();
-        }
-
-        public IActionResult GetAllComments(int id)
-        {
-            //bütün yorumları listele
-            return View();
-        }
+			//comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            commentRepository.CommentAdd(comment);
+            return RedirectToAction("Index", "Home");
+        }    
         public IActionResult AdminDeleteComments(int id)
         {
-            //Admin yorumları siler
-            return View();
+            
+            commentRepository.DeleteComment(id);
+            return RedirectToAction("AdminGetAllComments", "Comment");
         }
-        
+        public IActionResult AdminGetAllComments()
+        {
+			CommentRepository commentRepository = new CommentRepository();
+			return View(commentRepository.TList("Blog"));
+		}
 
     }
 }

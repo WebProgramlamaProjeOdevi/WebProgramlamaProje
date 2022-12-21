@@ -34,7 +34,8 @@
 					</div>
 					}
 					@await Component.InvokeAsync("CommentList",new{id=ViewBag.id})
-					Yorum Yap
+					@await Html.PartialAsync("/Views/Comment/LeaveComment.cshtml")
+
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
