@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <br />
-<h2 style="color :red">Yazar Güncelleme</h2>
+<h2 style="color :red" key=46>Yazar Güncelleme</h2>
 <form class="form-group" method="post">
     @Html.Label("Author ID (Değiştirmeyiniz!)")
     @Html.TextBoxFor(x => x.AuthorID, new { @class = "form-control" })
@@ -13,5 +13,5 @@
     @Html.Label("İsim Soyisim")
     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
     <br />
-    <button class="btn btn-info">Güncelle</button>
+    <button class="btn btn-info" key=43>Güncelle</button>
 </form>

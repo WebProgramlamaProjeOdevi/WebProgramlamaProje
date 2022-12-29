@@ -20,13 +20,15 @@ namespace WebProgramlamaProje.Controllers
 			//comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             commentRepository.CommentAdd(comment);
             return RedirectToAction("Index", "Home");
-        }    
+        }
+        [Authorize]
         public IActionResult AdminDeleteComments(int id)
         {
             
             commentRepository.DeleteComment(id);
             return RedirectToAction("AdminGetAllComments", "Comment");
         }
+        [Authorize]
         public IActionResult AdminGetAllComments()
         {
 			CommentRepository commentRepository = new CommentRepository();

@@ -1,58 +1,62 @@
 ﻿@{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/adminui/css/css.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Panel</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <link rel="shortcut icon" type="image/png" href="~/blogui/assets/img/logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/adminui/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="~/adminui/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="~/adminui/css/css.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Admin Panel</title>
+	<link rel="shortcut icon" type="image/png" href="~/blogui/assets/img/logo.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="~/adminui/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="~/adminui/dist/css/adminlte.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="/Home/Index/">Websiteye git</a>
-        <a href="/Blog/AdminGetAllBlogs/">Bloglar</a>
-        <a href="/Author/AuthorList/">Yazarlar</a>
-        <a href="/Comment/AdminGetAllComments/">Yorumlar</a>
-        <a href="/Category/AdminCategoryList/">Kategoriler</a>
-        <a href="/Login/Logout/">Çıkış</a>
-        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-    </div>
+	<div class="topnav" id="myTopnav">
+		<a href="/Home/Index/" key=15>Websiteye git</a>
+		<a href="/Blog/AdminGetAllBlogs/" key=1>Bloglar</a>
+		@if (User.IsInRole("admin"))
+		{
+			<a href="/Author/AuthorList/" key=18>Yazarlar</a>
+			<a href="/Comment/AdminGetAllComments/" key=19>Yorumlar</a>
+			<a href="/Category/AdminCategoryList/" key=20>Kategoriler</a>
+		}		
+		<a class="dp" id="tr" href="#">Türkçe</a>
+		<a class="dp" id="en" href="#">English</a>
 
-    <div class="container">
-        @RenderBody()
-    </div>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
-    <!-- jQuery -->
-    <script src="~/adminui/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="~/adminui/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/adminui/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/adminui/dist/js/demo.js"></script>
+		<a href="/UserAuthentication/Logout/" key=21>Çıkış</a>
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+	</div>
+
+	<div class="container">
+		@RenderBody()
+	</div>
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>
+	<script src="~/adminui/plugins/jquery/jquery.min.js"></script>
+	<script src="~/adminui/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/adminui/dist/js/adminlte.min.js"></script>
+	<script src="~/adminui/dist/js/demo.js"></script>
+	<script src="~/js/language.js"></script>
 </body>
 </html>

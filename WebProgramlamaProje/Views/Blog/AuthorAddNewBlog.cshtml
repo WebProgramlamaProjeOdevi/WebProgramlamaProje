@@ -5,29 +5,26 @@
 }
 
 <br />
-<h2 style="color :red">Yeni Blog Ekle</h2>
-<p>Yanında * işareti olanlar doldurulmak zorundadır.</p>
+<h2 style="color :red" key=48>Yeni Blog Ekle</h2>
 <form class="form-group" method="post">
-    <label for="BlogName">Blog Başlığı</label>
+    <label for="BlogName" key=49>Blog Başlığı</label>
     @Html.TextBoxFor(x => x.BlogName, new { @class = "form-control" })
     <br />
-    <label for="CategoryID">Kategori*</label>
-    <p>Kategori yok ise kategoriler bölümünden yeni kategori ekleyiniz.</p>
-    Html.DropDownListFor(x => x.CategoryID, (ListSelectListItem>)ViewBag.values, new { class = "form-control" })
+    <label for="CategoryID" key=50>Kategori*</label>
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
     <br />
-    <label for="BlogDate">Tarih (dd.mm.yyyy)*</label>
+    <label for="BlogDate" key=51>Tarih (dd.mm.yyyy)*</label>
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
     <br />
-    <label for="AuthorID">Yazar*</label>
-    <p>Yazar yok ise yazarlar bölümünden yeni yazar ekleyiniz.</p>
-    Html.DropDownListFor(x => x.AuthorID, (ListSelectListItem>)ViewBag.values2, new { class = "form-control" })
+    <label for="AuthorID" key=52>Yazar*</label>
+    @Html.DropDownListFor(x => x.AuthorID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
     <br />
-    <label for="BlogImage">1.Fotoğraf URL</label>
+    <label for="BlogImage" key=53>1.Fotoğraf URL</label>
     @Html.TextBoxFor(x => x.ImageAdress, new { @class = "form-control" })
     <br />
-    <label for="BlogContent">İçerik 1.Paragraf (min 200 karakter)</label>
+    <label for="BlogContent" key=54>İçerik 1.Paragraf (min 200 karakter)</label>
     @Html.TextAreaFor(x => x.Description, 10, 20, new { @class = "form-control" })
     <br />    
-    <button class="btn btn-info">Kaydet</button>
+    <button class="btn btn-info" key=55>Kaydet</button>
 </form>
 

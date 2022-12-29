@@ -14,7 +14,7 @@
     <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="color :red">Kategori Listesi</h3>
+                <h3 class="card-title" style="color :red" key=35>Kategori Listesi</h3>
 
             </div>
             <div class="card-body p-0 responsive">
@@ -24,13 +24,13 @@
                             <th>
                                 ID
                             </th>
-                            <th>
+                            <th key=36>
                                 Kategori Adı
                             </th>
-                            <th>
+                            <th key=37>
                                 Düzenle
                             </th>
-                            <th>
+                            <th key=38>
                                 Sil
                             </th>
                         </tr>
@@ -47,13 +47,13 @@
 
 
                                 <td>
-                                    <a class="btn btn-info btn-sm" href="/Category/EditCategory/@x.CategoryID">
+                                    <a class="btn btn-info btn-sm" href="/Category/EditCategory/@x.CategoryID" key=37>
                                         <i class="fas fa-pencil-alt"></i>
                                         Düzenle
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm delete" href="/Category/DeleteCategory/@x.CategoryID">
+                                    <a class="btn btn-danger btn-sm delete" href="/Category/DeleteCategory/@x.CategoryID" key=38>
                                         <i class="fas fa-trash"></i>
                                         Sil
                                     </a>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </section>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni kategori ekle</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1" key=39>Yeni kategori ekle</button>
     <div class="modal fade" id="Modal1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -77,12 +77,12 @@
                 </div>
                 <form method="post" action="/Category/AddNewCategory/">
                     <div class="modal-body">
-                        <label>Kategori adı</label>
+                        <label key=36>Kategori adı</label>
                         <input type="text" name="CategoryName" class="form-control" />
                         <br />
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-info">Kaydet</button>
+                        <button class="btn btn-info key=40">Kaydet</button>
                     </div>
                 </form>
             </div>

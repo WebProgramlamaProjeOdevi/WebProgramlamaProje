@@ -4,13 +4,13 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @foreach(var x in Model){
-<div class="breadcrumb-section" style="background-image: url('https://images.pexels.com/photos/3075993/pexels-photo-3075993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+<div class="breadcrumb-section" style="background-image: url('@x.ImageAdress');">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
 					<h1>@x.BlogName</h1>
-						<p>&nbsp;-&nbsp; @(((DateTime)x.BlogDate).ToString("dd-MM-yyyy"))</p>
+						<p>&nbsp;&nbsp; @(((DateTime)x.BlogDate).ToString("dd-MM-yyyy"))</p>
 				</div>
 			</div>
 		</div>

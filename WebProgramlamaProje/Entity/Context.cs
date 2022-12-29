@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebProgramlamaProje.Entity
 {
-	public class Context : DbContext
-	{
-		protected override void OnConfiguring ( DbContextOptionsBuilder optionsBuilder)
+	public class Context : IdentityDbContext<AppUser>
+    {        
+        protected override void OnConfiguring ( DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("server=DESKTOP-S43BMFO\\SQLEXPRESS;database=WebProgramlamaDb;integrated security=true;Encrypt=false");
 		}

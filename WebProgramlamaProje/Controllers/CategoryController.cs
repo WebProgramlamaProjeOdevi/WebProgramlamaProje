@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebProgramlamaProje.Entity;
 using WebProgramlamaProje.Repositories;
 
 namespace WebProgramlamaProje.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         public IActionResult AdminCategoryList()

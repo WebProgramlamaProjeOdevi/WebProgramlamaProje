@@ -10,7 +10,7 @@ namespace WebProgramlamaProje.Repositories
     {
         Context context = new Context();
 
-        public List<T> TList()
+		public List<T> TList()
         {
             return context.Set<T>().ToList();
         }
@@ -48,5 +48,6 @@ namespace WebProgramlamaProje.Repositories
         {
             return context.Set<T>().Include(item).ToList();
         }
-    }
+
+	}
 }
