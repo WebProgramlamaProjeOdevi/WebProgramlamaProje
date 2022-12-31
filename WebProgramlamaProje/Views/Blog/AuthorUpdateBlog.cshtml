@@ -1,4 +1,5 @@
 ﻿@model WebProgramlamaProje.Entity.Blog
+
 @{
     ViewData["Title"] = "AuthorUpdateBlog";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,21 +7,23 @@
 
 <br />
 <h2 style="color :red">Blog Güncelle</h2>
-<p>Yanında * işareti olanlar doldurulmak zorundadır.</p>
 <form class="form-group" method="post">
+    <label for="BlogTitle">Blog ID</label>
+    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+    <br />
     <label for="BlogName">Blog Başlığı</label>
     @Html.TextBoxFor(x => x.BlogName, new { @class = "form-control" })
     <br />
-    <label for="CategoryID">Kategori*</label>
+    <label for="CategoryID">Kategori</label>
     <p>Kategori yok ise kategoriler bölümünden yeni kategori ekleyiniz.</p>
-    Html.DropDownListFor(x => x.CategoryID, (ListSelectListItem>)ViewBag.values, new { class = "form-control" })
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
     <br />
-    <label for="BlogDate">Tarih (dd.mm.yyyy)*</label>
+    <label for="BlogDate">Tarih (dd.mm.yyyy)</label>
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
     <br />
-    <label for="AuthorID">Yazar*</label>
+    <label for="AuthorID">Yazar</label>
     <p>Yazar yok ise yazarlar bölümünden yeni yazar ekleyiniz.</p>
-    Html.DropDownListFor(x => x.AuthorID, (ListSelectListItem>)ViewBag.values2, new { class = "form-control" })
+    @Html.DropDownListFor(x => x.AuthorID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
     <br />
     <label for="BlogImage">1.Fotoğraf URL</label>
     @Html.TextBoxFor(x => x.ImageAdress, new { @class = "form-control" })

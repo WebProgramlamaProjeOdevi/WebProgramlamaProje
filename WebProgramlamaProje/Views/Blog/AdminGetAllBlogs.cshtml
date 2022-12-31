@@ -30,7 +30,10 @@
                             </th>
                             <th style="width: 8%" class="text-center" key=24>
                                 Kategori
-                            </th>                         
+                            </th>  
+                            <th style="width: 5%" key=43>
+                                Düzenle
+                            </th>
                             <th style="width: 5%" key=25>
                                 Sil
                             </th>
@@ -52,9 +55,15 @@
 
                                 <td class="project-state">
                                     <span class="badge badge-dark">@x.Category.CategoryName</span>
-                                </td>                                
+                                </td>
+                                 <td>
+                                    <a class="btn btn-danger btn-sm " href="/Blog/AuthorUpdateBlog/@x.BlogID" key=43>
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Düzenle
+                                    </a>
+                                </td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm delete" href="/Blog/AuthorDeleteBlog/@x.BlogID" key=25>
+                                    <a class="btn btn-danger btn-sm delete" href="/Blog/DeleteBlog/@x.BlogID" key=25>
                                         <i class="fas fa-trash"></i>
                                         Sil
                                     </a>
@@ -65,6 +74,7 @@
                                         Yorumlar
                                     </a>
                                 </td>
+
                                 <td>
                                     <a href="/Home/BlogDetails/@x.BlogID" class="btn btn-success btn-sm" key=27>
                                         <i class="fas fa-solid fa-info"></i>

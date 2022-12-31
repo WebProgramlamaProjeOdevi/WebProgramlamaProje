@@ -19,7 +19,9 @@ namespace WebProgramlamaProje.Controllers
         public IActionResult DeleteBlog(int id)
         {
             //Blogları sil
-            return View();
+            BlogRepository blogRepository = new BlogRepository();
+            blogRepository.DeleteBlog(id);
+            return RedirectToAction("AdminGetAllBlogs");
         }
         public IActionResult AuthorGetBlogs() 
         { 
@@ -48,17 +50,28 @@ namespace WebProgramlamaProje.Controllers
         public IActionResult AuthorDeleteBlog(int id)
         {
             //Yazar blog sil
-            return RedirectToAction("AuthorGetBlogs");
+
+            return RedirectToAction("AdminGetAllBlogs");
         }
         [HttpGet]
         public IActionResult AuthorUpdateBlog(int id)
         {
-            return View();
+            BlogRepository blogRepository = new BlogRepository();
+            Blog blog = blogRepository.FindBlog(id);
+            Context c = new Context();
+            List<SelectListItem> values = (from x in c.Categories.ToList() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryID.ToString() }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in c.Authors.ToList() select new SelectListItem { Text = x.AuthorName, Value = x.AuthorID.ToString() }).ToList();
+            ViewBag.values2 = values2;
+            return View(blog);
         }
         [HttpPost]
         public IActionResult AuthorUpdateBlog(Blog p)
         {
-            return RedirectToAction("AuthorGetBlogs");
-        }
+            BlogRepository blogRepository = new BlogRepository();
+            blogRepository.EditBlog(p);
+            return RedirectToAction("AdminGetAllBlogs");
+        }       
+     
     }
 }
