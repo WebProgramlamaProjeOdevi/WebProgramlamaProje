@@ -6,7 +6,7 @@ namespace WebProgramlamaProje.Entity
 	{
 		protected override void OnConfiguring ( DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("server=DESKTOP-S43BMFO\\SQLEXPRESS;database=WebProgramlamaDb;integrated security=true;Encrypt=false");
+			optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Encrypt=false");
 		}
 		public DbSet<Admin> Admins { get; set; }
 		public DbSet<Author> Authors { get; set; }	
