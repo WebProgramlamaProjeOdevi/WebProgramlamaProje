@@ -61,5 +61,27 @@ namespace WebProgramlamaProje.Controllers
             return BadRequest();
 
         }
+        [HttpGet]
+        public IActionResult SearchBlog(string search)
+        {
+            var blog =(from item in _context.Blogs
+                       where item.BlogName.Contains(search) 
+                       select item).ToList();
+            return Ok(blog);
+        }
+        [HttpGet("{id}")]
+        [Route("api/BlogsApi/find")]
+        public IActionResult FindBlogWithId(int Id)
+        {
+            var blog =_context.Blogs.Where(p=>p.BlogID==Id).FirstOrDefault();
+            if (blog != null)
+            {
+                _context.Blogs.Remove(blog);
+                return Ok(blog);
+
+            }
+            return BadRequest();
+        }
+    
     }
 }
