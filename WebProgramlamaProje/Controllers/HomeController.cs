@@ -26,7 +26,8 @@ namespace WebProgramlamaProje.Controllers
 
         public IActionResult AllBlogs() 
         {
-            return View();
+            BlogRepository blogRepository = new BlogRepository();
+            return View(blogRepository.TList("Author"));
         }
 
         public IActionResult BlogDetails(int id) 

@@ -1,16 +1,16 @@
 ﻿<div class="comment-template">
-    <h4>Yorum bırakın</h4>
-    <p>Soru ve görüşlerinizi bizimle paylaşın...</p>
-    <form method="post">
+    <h4 key=56>Yorum bırakın</h4>
+    <p key=57>Soru ve görüşlerinizi bizimle paylaşın...</p>
+    <form method="post" action="/Comment/LeaveComment/">
         <p>
             <input type="hidden" name="CommentDate" value="@DateTime.Now.ToShortDateString()" />
             <input type="hidden" name="BlogID" value="@ViewBag.id" />
-            <input type="text" name="NameSurname" placeholder="İsim*">
+            <input type="text" name="NameSurname" placeholder="Name Surname*">
             <input type="email" name="CommentMail" placeholder="Email*">
         </p>
         <p>
-            <textarea name="CommentText" placeholder="Yorumunuz*" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="CommentText" placeholder="Your comment is here*" cols="30" rows="10" class="form-control"></textarea>
         </p>
-        <p><input type="submit" value="Gönder"></p>
+        <p ><input type="submit" value="Gönder"></p>
     </form>
 </div>

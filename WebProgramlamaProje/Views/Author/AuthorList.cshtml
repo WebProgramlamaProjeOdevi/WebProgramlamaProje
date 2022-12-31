@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WebProgramlamaProje.Entity.Author>
+
+@{
+	ViewData["Title"] = "AuthorList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<br />
+<h2 style="color :red" key=18>Yazarlar</h2>
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<section class="content">
+			<div class="card card-solid">
+				<div class="card-body pb-0">
+					<div class="row d-flex align-items-stretch">
+						@foreach (var x in Model)
+						{
+							<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+								<div class="card bg-light text-center">
+									<div class="card-header text-muted border-bottom-0" key=29>
+										Yazar
+									</div>
+									<div class="card-body pt-0">
+										<h2 class="lead"><b key=30>Kullanıcı adı:</b><b> @x.AuthorName</b></h2>
+										<h5 class="lead"><b key=31>Şifre:</b><b> @x.AuthorPassword</b></h5>
+									</div>
+									<div class="card-footer text-center">
+										<div class="text-center">
+											<a href="/Author/EditAuthor/@x.AuthorID" class="btn btn-sm btn-warning" key=32>
+												<i class="fas fa-user"></i> Düzenle
+											</a>
+											<a href="/Author/DeleteAuthor/@x.AuthorID" class="btn btn-sm btn-danger delete" key=25>
+												<i class="fas fa-trash"></i> Sil
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
+<br />
+
+<script>
+	$('.delete').on('click', function (e) {
+		e.preventDefault();
+		var self = $(this);
+		console.log(self.data('title'));
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+				confirmButton: 'btn btn-success',
+				cancelButton: 'btn btn-danger'
+			},
+			buttonsStyling: true
+		})
+		swalWithBootstrapButtons.fire({
+			title: 'Emin misin?',
+			text: "Yazarı silerseniz, yazdığı bloglar da silinecek! Tavsiye edilmez!!!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Evet,sil!',
+			cancelButtonText: 'Hayır,iptal!',
+			confirmButtonColor: "#558B2F",
+			cancelButtonColor: "#C62828",
+			reverseButtons: false
+		}).then((result) => {
+			if (result.isConfirmed) {
+				swalWithBootstrapButtons.fire(
+					'Silindi!',
+					'Yazar basarıyla silindi.',
+					'success'
+				)
+				location.href = self.attr('href');
+			} else if (
+				result.dismiss === Swal.DismissReason.cancel
+			) {
+				swalWithBootstrapButtons.fire(
+					'İptal edildi',
+					'Yazar güvende :)',
+					'error'
+				)
+			}
+		})
+	})</script>

@@ -10,11 +10,25 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="~/loginui/css/style.css">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+
 </head>
 <body class="img js-fullheight" style="background-image: url(https://www.freecodecamp.org/news/content/images/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg);">
-
+	<br />
+	<div class="dropdown" style="margin-left:25px">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="drop_yazı" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    English
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item dp"  id="tr" href="#">Türkçe</a>
+    <a class="dropdown-item dp" id="en" href="#">English</a>
+   
+  </div>
+</div>
 	@RenderBody()
-	
+
+	<script src="~/js/language.js"></script>
 	<script src="~/loginui/js/jquery.min.js"></script>
 	<script src="~/loginui/js/popper.js"></script>
 	<script src="~/loginui/js/bootstrap.min.js"></script>

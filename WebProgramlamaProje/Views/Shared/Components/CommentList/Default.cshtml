@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<WebProgramlamaProje.Entity.Comment>
 
 <div class="comments-list-wrap">
-    <h3 class="comment-count-title">Yorumlar</h3>
+    <h3 key=26 class="comment-count-title">Yorumlar</h3>
     <div class="comment-list">
         @if (Model.Count() == 0)
         {
-            <h4>Henüz yorum yok. İlk yorumu siz yapın...</h4>
+            <h4 key=59>Henüz yorum yok. İlk yorumu siz yapın...</h4>
         }
         else
         {

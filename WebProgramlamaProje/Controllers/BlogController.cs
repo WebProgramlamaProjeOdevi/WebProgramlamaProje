@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebProgramlamaProje.Entity;
 using WebProgramlamaProje.Repositories;
 
 namespace WebProgramlamaProje.Controllers
 {
+    [Authorize]
     public class BlogController : Controller
     {
         public IActionResult AdminGetAllBlogs()
@@ -25,16 +28,22 @@ namespace WebProgramlamaProje.Controllers
         }
 
         [HttpGet]
-        public IActionResult AuthorAddNewBlog(Blog blog)
+        public IActionResult AuthorAddNewBlog()
         {
-            //Yazar yeni blog ekle get
+            Context c = new Context();
+            List<SelectListItem> values = (from x in c.Categories.ToList() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryID.ToString() }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in c.Authors.ToList() select new SelectListItem { Text = x.AuthorName, Value = x.AuthorID.ToString() }).ToList();
+            ViewBag.values2 = values2;
             return View();
         }
         [HttpPost]
-        public IActionResult AuthorAddNewBlog(int id)
+        public IActionResult AuthorAddNewBlog(Blog b)
         {
             //Yazar yeni blog ekle post
-            return RedirectToAction("AuthorGetBlogs");
+            BlogRepository blogRepository = new BlogRepository();
+            blogRepository.AddBlog(b);
+            return RedirectToAction("AdminGetAllBlogs");
         }
         public IActionResult AuthorDeleteBlog(int id)
         {

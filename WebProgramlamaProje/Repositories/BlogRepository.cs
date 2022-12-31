@@ -10,5 +10,11 @@ namespace WebProgramlamaProje.Repositories
 			return blogRepository.List(x=>x.BlogID== id);
 
 		}
-	}
+
+        public int AddBlog(Blog p)
+        {
+            BlogRepository blogRepository = new BlogRepository();    
+            return blogRepository.TAdd(p);
+        }
+    }
 }

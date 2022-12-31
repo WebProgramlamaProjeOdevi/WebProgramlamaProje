@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebProgramlamaProje.Entity
 {
-	public class Context : DbContext
-	{
-		protected override void OnConfiguring ( DbContextOptionsBuilder optionsBuilder)
+	public class Context : IdentityDbContext<AppUser>
+    {        
+        protected override void OnConfiguring ( DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Encrypt=false");
 		}
